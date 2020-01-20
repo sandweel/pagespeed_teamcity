@@ -63,10 +63,10 @@ with open(urls) as pagespeedurls:
             print("Key", keyErr, "not found")
             print("Check build number on CI/CD or run more speedtests for comparing!")
             exit(1)
-        if FCP_last > FCP_preLast:
-            message = f'Build `{lastBuildNum}` {line} pagespeed is bigger than build `{preLastBuildNum}` stats `{FCP_last}` > `{FCP_preLast}`\nBuild url {lastBuildUrl}'
-            sendMessage(message)
-        if FI_last > FI_preLast:
-            message = f'Build `{lastBuildNum}` {line} pagespeed is bigger than build `{preLastBuildNum}` stats: `{FI_last}` > `{FI_preLast}`\nBuild url {lastBuildUrl}'
-            sendMessage(message)
 
+        if float(FCP_last) > float(FCP_preLast):
+            message = f'*URL*: {line}\n*Latest build:* _{lastBuildNum}_\n*FI:* _{FCP_last}_\n\n*Previous build:* _{preLastBuildNum}_\n*FI*: _{FCP_preLast}_\n*Build url:* {lastBuildUrl}'
+            sendMessage(message)
+        if float(FI_last) > float(FI_preLast):
+            message = f'*URL*: {line}\n*Latest build:* _{lastBuildNum}_\n*FI:* _{FI_last}_\n\n*Previous build:* _{preLastBuildNum}_\n*FI*: _{FI_preLast}_\n*Build url:* {lastBuildUrl}'
+            sendMessage(message)

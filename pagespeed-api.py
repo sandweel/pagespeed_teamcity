@@ -23,8 +23,6 @@ if not os.path.exists(results_json):
     json_file.write('{}')
     json_file.close()
 
-
-
 if not columnTitleRow in csvHeader:
     file.write(columnTitleRow)
 
